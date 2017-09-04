@@ -70,3 +70,52 @@ angular.module('starter', ['ionic'])
       alert($scope.nome);
     };
   })
+
+  .controller("appController", function ($scope, $ionicModal) {
+    $scope.contatos = [
+      { nome: "Camille", email: "camila@email.com" },
+      { nome: "Renato", email: "renato@email.com" },
+      { nome: "Alice", email: "alice@email.com" }
+    ];
+    $ionicModal.fromTemplateUrl('templates/modal.html', {
+      scope: $scope
+    }).then(function (modal) {
+      $scope.modal = modal;
+    });
+    $scope.addContato = function (contato) {
+      $scope.contatos.push({ nome: contato.nome, email: contato.email });
+      contato.nome = "";
+      contato.email = "";
+
+      $scope.modal.hide();
+    };
+  })
+
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('app', {
+        url: '/app',
+        abstract: true,
+        templateUrl: 'templates/layout.html'
+      })
+      .state('app.home', {
+        url: '/home',
+        views: {
+          'layoutContent': {
+            templateUrl: 'templates/home.html'
+          }
+        },
+
+      })
+      .state('app.sobre', {
+        url: '/sobre',
+        views: {
+          'layoutContent': {
+            templateUrl: 'templates/sobre.html'
+          }
+        },
+      })
+      ;
+    $urlRouterProvider.otherwise('/app/home')
+
+  })

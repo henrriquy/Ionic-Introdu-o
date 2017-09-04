@@ -1,0 +1,35 @@
+<ion-view view-title="Home">
+    <ion-content class="">
+            <h2>Home</h2>
+            <div class="list">
+                <div class="item">
+                    <button class="meuTemaButton">Meu tema button</button>
+                </div>
+            </div>
+            <div class="list">
+                <a href="#app/home" class="item">Home</a>
+                <a href="#app/sobre" class="item">Sobre</a>
+            </div>
+            <ion-list >
+                    <ion-checkbox  ng-model="cor.azul">Azul</ion-checkbox>
+                    <ion-checkbox  ng-model="cor.vermelho">Vermelho</ion-checkbox>
+                    <ion-checkbox  ng-model="cor.amarelo">Amarelo</ion-checkbox>
+                    <ion-checkbox  ng-model="cor.verde">Verde</ion-checkbox>
+                    <ion-item >{{cor}}</ion-item>
+                  </ion-list>
+                  <ion-list >
+                    <ion-radio  ng-model="sexo" ng-value="'Masculino'">Masculino</ion-radio>
+                    <ion-radio  ng-model="sexo" ng-value="'Feminino'">Feminino</ion-radio>
+                    <ion-item >{{sexo}}</ion-item>        
+                  </ion-list>
+               
+                <div class="list">
+                  <div class="item range">
+                    <i class="icon ion-volume-low"></i>
+                    <input type="range"  ng-model="volume">
+                    <i class="icon ion-volume-high"></i>
+                  </div>
+                  <div class="item">{{volume}}</div>
+                </div>
+    </ion-content>
+</ion-view>
